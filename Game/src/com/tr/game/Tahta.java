@@ -61,7 +61,7 @@ public class Tahta {
 		
 		boolean oyuncuDegistir=true;
 		
-		while(!oyunBittiMi())
+		while(!oyunBittiMi())   
 		{
 			
 			if(oyuncuDegistir)
@@ -73,6 +73,8 @@ public class Tahta {
 				char yon=s.charAt(0);
 				
 				oyuncular[0].hareketEt(yon, oyunMatrisi.length, oyunMatrisi.length);
+				
+				oyuncular[0].puanEkle(oyunMatrisi[oyuncular[0].getX()][oyuncular[0].getY()]);
 
 				oyuncuDegistir=!oyuncuDegistir;
 			}
@@ -86,20 +88,49 @@ public class Tahta {
 				
 				oyuncular[1].hareketEt(yon, oyunMatrisi.length, oyunMatrisi.length);
 
+				oyuncular[0].puanEkle(oyunMatrisi[oyuncular[0].getX()][oyuncular[0].getY()]);
+				
 				oyuncuDegistir=!oyuncuDegistir;
 			}
 			
-			
+			tahtayiYazdir();
 			
 		}
+		
+		
+		if(oyuncular[0].getToplamPuan()>oyuncular[1].getToplamPuan())
+		{
+			System.out.println("Kazanan Oyuncu :"+oyuncular[0].oyuncuAdi+" Toplam Puan :"+oyuncular[0].getToplamPuan());
+		}
+		else if(oyuncular[0].getToplamPuan()<oyuncular[1].getToplamPuan())
+		{
+			System.out.println("Kazanan Oyuncu :"+oyuncular[1].oyuncuAdi+" Toplam Puan :"+oyuncular[1].getToplamPuan());
+		}
+		else{
+			System.out.println("Oyun Berabere :)");
+		}
+		
 		
 	}
 	
 	public void tahtayiYazdir()
 	{
-		for (int dizi[] : oyunMatrisi) {
-			for (int puan : dizi) {
-				System.out.print(puan+" ");
+		
+		for(int i=0;i<oyunMatrisi.length;i++)
+		{
+			for(int j=0;j<oyunMatrisi.length;j++)
+			{
+				if(i==oyuncular[0].getX() && j==oyuncular[0].getY())
+				{
+					System.out.print(oyuncular[0].oyuncuAdi+" ");
+				} else if(i==oyuncular[1].getX() && j==oyuncular[1].getY())
+				{
+					System.out.print(oyuncular[1].oyuncuAdi+" ");
+				}
+				else
+				{
+					System.out.print(oyunMatrisi[i][j]+" ");
+				}
 			}
 			System.out.println();
 		}
