@@ -88,7 +88,7 @@ public class Tahta {
 				
 				oyuncular[1].hareketEt(yon, oyunMatrisi.length, oyunMatrisi.length);
 
-				oyuncular[0].puanEkle(oyunMatrisi[oyuncular[0].getX()][oyuncular[0].getY()]);
+				oyuncular[1].puanEkle(oyunMatrisi[oyuncular[1].getX()][oyuncular[1].getY()]);
 				
 				oyuncuDegistir=!oyuncuDegistir;
 			}
