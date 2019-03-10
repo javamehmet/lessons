@@ -40,6 +40,10 @@ public class Tahta {
 	}
 
 	public void setOyuncular(Oyuncu[] oyuncular) {
+
+		oyunMatrisi[oyuncular[0].getX()][oyuncular[0].getY()] = 0;
+		oyunMatrisi[oyuncular[1].getX()][oyuncular[1].getY()] = 0;
+
 		this.oyuncular = oyuncular;
 	}
 
@@ -54,85 +58,91 @@ public class Tahta {
 
 		return true;
 	}
-	
-	public void oyunuOynat()
-	{
-		Scanner sc=new Scanner(System.in);
-		
-		boolean oyuncuDegistir=true;
-		
-		while(!oyunBittiMi())   
-		{
-			
-			if(oyuncuDegistir)
-			{
-				System.out.println("Sayýn "+oyuncular[0].oyuncuAdi+" hareket yönünü seçiniz :(b,d,k,g)");
+
+	public void oyunuOynat() {
+		Scanner sc = new Scanner(System.in);
+
+		boolean oyuncuDegistir = true;
+
+		while (!oyunBittiMi()) {
+
+			if (oyuncuDegistir) {
+				System.out.println("Sayýn " + oyuncular[0].oyuncuAdi + " hareket yönünü seçiniz :(b,d,k,g)");
+
+				String s = sc.nextLine();
 				
-				String s=sc.nextLine();
 				
-				char yon=s.charAt(0);
-				
-				oyuncular[0].hareketEt(yon, oyunMatrisi.length, oyunMatrisi.length);
-				
+				char yon = s.charAt(0);
+
+				oyuncular[0].hareketEt(yon, oyunMatrisi.length-1, oyunMatrisi.length-1);
+
 				oyuncular[0].puanEkle(oyunMatrisi[oyuncular[0].getX()][oyuncular[0].getY()]);
 
-				oyuncuDegistir=!oyuncuDegistir;
-			}
-			else
-			{
-				System.out.println("Sayýn "+oyuncular[1].oyuncuAdi+" hareket yönünü seçiniz :(b,d,k,g)");
+				oyunMatrisi[oyuncular[0].getX()][oyuncular[0].getY()] = 0;
 				
-				String s=sc.nextLine();
+				oyuncuDegistir = !oyuncuDegistir;
+			} else {
+				System.out.println("Sayýn " + oyuncular[1].oyuncuAdi + " hareket yönünü seçiniz :(b,d,k,g)");
+
+				String s = sc.nextLine();
 				
-				char yon=s.charAt(0);
-				
-				oyuncular[1].hareketEt(yon, oyunMatrisi.length, oyunMatrisi.length);
+				char yon = s.charAt(0);
+
+				oyuncular[1].hareketEt(yon, oyunMatrisi.length-1, oyunMatrisi.length-1);
 
 				oyuncular[1].puanEkle(oyunMatrisi[oyuncular[1].getX()][oyuncular[1].getY()]);
+
+				oyunMatrisi[oyuncular[1].getX()][oyuncular[1].getY()] = 0;
 				
-				oyuncuDegistir=!oyuncuDegistir;
+
+				oyuncuDegistir = !oyuncuDegistir;
 			}
-			
+				
+
 			tahtayiYazdir();
-			
+
 		}
-		
-		
-		if(oyuncular[0].getToplamPuan()>oyuncular[1].getToplamPuan())
-		{
-			System.out.println("Kazanan Oyuncu :"+oyuncular[0].oyuncuAdi+" Toplam Puan :"+oyuncular[0].getToplamPuan());
-		}
-		else if(oyuncular[0].getToplamPuan()<oyuncular[1].getToplamPuan())
-		{
-			System.out.println("Kazanan Oyuncu :"+oyuncular[1].oyuncuAdi+" Toplam Puan :"+oyuncular[1].getToplamPuan());
-		}
-		else{
+
+		if (oyuncular[0].getToplamPuan() > oyuncular[1].getToplamPuan()) {
+			System.out.println(
+					"Kazanan Oyuncu :" + oyuncular[0].oyuncuAdi + " Toplam Puan :" + oyuncular[0].getToplamPuan());
+		} else if (oyuncular[0].getToplamPuan() < oyuncular[1].getToplamPuan()) {
+			System.out.println(
+					"Kazanan Oyuncu :" + oyuncular[1].oyuncuAdi + " Toplam Puan :" + oyuncular[1].getToplamPuan());
+		} else {
 			System.out.println("Oyun Berabere :)");
 		}
-		
-		
+
 	}
-	
-	public void tahtayiYazdir()
-	{
-		
-		for(int i=0;i<oyunMatrisi.length;i++)
-		{
-			for(int j=0;j<oyunMatrisi.length;j++)
-			{
-				if(i==oyuncular[0].getX() && j==oyuncular[0].getY())
-				{
-					System.out.print(oyuncular[0].oyuncuAdi+" ");
-				} else if(i==oyuncular[1].getX() && j==oyuncular[1].getY())
-				{
-					System.out.print(oyuncular[1].oyuncuAdi+" ");
-				}
-				else
-				{
-					System.out.print(oyunMatrisi[i][j]+" ");
+
+	public void tahtayiYazdir() {
+
+		for (int i = 0; i < oyunMatrisi.length; i++) {
+			for (int j = 0; j < oyunMatrisi.length; j++) {
+				if (i == oyuncular[0].getX() && j == oyuncular[0].getY()) {
+					System.out.print(oyuncular[0].oyuncuAdi + " ");
+				} else if (i == oyuncular[1].getX() && j == oyuncular[1].getY()) {
+					System.out.print(oyuncular[1].oyuncuAdi + " ");
+				} else {
+					System.out.print("* ");
 				}
 			}
 			System.out.println();
 		}
 	}
+	
+	public char robot()
+	{
+		
+		
+		
+		String yon="d_b_k_g";
+		
+		char yonChar=yon.charAt((int)(Math.random()*4));
+		
+		
+		return yonChar;
+		
+	}
+	
 }
