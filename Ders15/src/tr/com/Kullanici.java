@@ -30,7 +30,6 @@ public class Kullanici {
 		
 		if(etkinlikler[0]==null)
 		{
-			System.out.println("if girdi");
 			
 			Scanner sc=new Scanner(System.in);
 			
@@ -44,9 +43,7 @@ public class Kullanici {
 		}
 		
 		else {
-			
-			System.out.println("else girdi");
-			
+						
 			Etkinlik temp [] =etkinlikler;
 			
 			etkinlikler =new Etkinlik[etkinlikler.length+1];
@@ -73,16 +70,74 @@ public class Kullanici {
 		
 	}
 	
-	public void etkinlikSi()
+	public void etkinlikSi(int index)
 	{
+		
+		if(etkinlikler.length<=index)
+		{
+			System.out.println("Etkinlik bulunamadý!");
+		}
+		else{
+			
+		
+			Etkinlik temp [] =new Etkinlik[etkinlikler.length-1];
+			
+			int sayac=0;
+			
+			for(int i=0;i<etkinlikler.length;i++)
+			{
+				if(i!=index)
+				{
+					temp[sayac]=etkinlikler[i];
+					sayac++;
+				}
+			}
+			
+			etkinlikler=new Etkinlik[temp.length];
+			
+			etkinlikler=temp;
+			
+		}
+		
+	
+		
+		
+		
+	}
+	
+	public Etkinlik etkinlikAra(String etkinlikAdi)
+	{
+		
+		
+		for(Etkinlik etkinlik:etkinlikler)
+		{
+			
+			if(etkinlik.getEtkinlikAdi().equals(etkinlikAdi))
+			{
+				return etkinlik;
+			}
+			
+			
+		}
+		
+	
+		return null;
+		
+		
+		
 		
 	}
 	
 	public void etkinlikleriYazdir()
 	{
+		System.out.println("----------Liste-------------");
+		
+		int index=0;
+		
 		for(Etkinlik etkinlik:etkinlikler)
 		{
-			System.out.println(etkinlik.getEtkinlikAdi());
+			System.out.println(index+" "+etkinlik.getEtkinlikAdi());
+			index++;
 		}
 	}
 
