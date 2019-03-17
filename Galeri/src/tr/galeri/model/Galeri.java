@@ -14,7 +14,7 @@ public class Galeri {
 	
 	public Galeri() {
 		
-		
+		arabalar =new Araba[1];
 	}
 
 	public String getAd() {
