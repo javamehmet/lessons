@@ -2,6 +2,7 @@ package tr.galeri.service;
 
 import tr.galeri.model.Araba;
 import tr.galeri.model.Galeri;
+import tr.galeri.model.Kullanici;
 import tr.galeri.model.Musteri;
 
 public class Data {
@@ -17,6 +18,12 @@ public class Data {
 		galeri.setAd("Java");
 		galeri.setAdres("Ankara");
 		galeri.setTelefon("0000000");
+		Kullanici kullanici=new Kullanici();
+		kullanici.setKullaniciAdi("Bertan");
+		kullanici.setSifre("1234");
+		kullanici.setTip("galeri");
+		
+		galeri.setKullanici(kullanici);
 		
 		Araba araba=new Araba();
 		

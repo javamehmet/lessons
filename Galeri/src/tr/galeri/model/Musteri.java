@@ -16,6 +16,7 @@ public class Musteri {
 	
 	public Musteri() {
 
+		arabalar=new Araba[1];
 	}
 
 	public String getAdSoyad() {
