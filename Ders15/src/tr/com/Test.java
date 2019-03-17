@@ -45,6 +45,8 @@ public class Test {
 		while(true)
 		{
 			
+		
+			
 			System.out.println("---------Menü-----------");
 			System.out.println("1 : Etkinlik Ekle");
 			System.out.println("2 : Etklink Sil");
@@ -61,7 +63,7 @@ public class Test {
 			default:
 				break;
 			}
-
+			
 		}
 		
 		
