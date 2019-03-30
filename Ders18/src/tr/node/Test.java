@@ -17,7 +17,7 @@ public class Test {
 		//controller.getList(root);
 		
 		Kitap kitap2=new Kitap();
-		kitap2.id=1;
+		kitap2.id=2;
 		kitap2.adi="Yasar 2";
 		
 		controller.add(root, kitap2);
@@ -25,21 +25,37 @@ public class Test {
 		
 		
 		Kitap kitap3=new Kitap();
-		kitap3.id=1;
+		kitap3.id=3;
 		kitap3.adi="Yasar 3";
 		
 		controller.add(root, kitap3);
 		//controller.getList(root);
 		
-		controller.lastDelete(root);
+		//controller.lastDelete(root);
 		
 	
 		
 		Kitap kitap4=new Kitap();
-		kitap4.id=1;
+		kitap4.id=4;
 		kitap4.adi="Yasar 4";
 		
-		root=controller.addFirst(root, kitap4);
+		root=controller.add(root, kitap4);
+		
+		controller.getList(root);
+		
+		Kitap kitap5=new Kitap();
+		kitap5.id=5;
+		kitap5.adi="Yasar 5";
+		
+		controller.add(root,3, kitap5);
+		
+		controller.getList(root);
+		
+		Kitap kitap6=new Kitap();
+		kitap6.id=6;
+		kitap6.adi="Yasar 6";
+		
+		controller.add(root,0, kitap6);
 		
 		controller.getList(root);
 

@@ -93,5 +93,60 @@ public class NodeController implements Controller {
 		}
 
 	}
+	
+	@Override
+	public Node add(Node root, int id, Kitap kitap) {
+
+		if(root.kitap==null)
+		{
+			root.kitap=kitap;
+		}
+		else
+		{
+			
+			if(root.nextNode==null)
+			{
+				root.nextNode=new Node();
+				root.nextNode.kitap=kitap;
+			}
+			else
+			{
+				
+				
+				Node node=root;
+				
+				while(node.kitap.id!=id)
+				{
+					if(node.nextNode==null)
+						break;
+					
+					node=node.nextNode;
+					
+				}
+				
+				Node temp=node.nextNode;
+				
+				node.nextNode=new Node();
+				node.nextNode.kitap=kitap;
+				node.nextNode.nextNode=temp;
+				
+				
+			}
+			
+			
+			
+		}
+
+		
+		
+		
+		return root;
+	}
+	
+	@Override
+	public Node remove(Node root, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
