@@ -1,6 +1,7 @@
 package tr.org.service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,6 +16,10 @@ public class ApachePoiService {
 
 	public XSSFWorkbook getWorkBook() throws InvalidFormatException, IOException {
 		return new XSSFWorkbook();
+	}
+	
+	public XSSFWorkbook getWorkBook(File file) throws InvalidFormatException, IOException {
+		return new XSSFWorkbook(new FileInputStream(file));
 	}
 
 	public XSSFSheet getSheet(XSSFWorkbook workbook, String sheetName) {

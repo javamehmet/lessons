@@ -29,5 +29,10 @@ public class Il extends BaseModel {
 		return Arrays.asList("Il Plaka No");
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return getAdi()+" "+plakaNo;
+	}
 	
 }
