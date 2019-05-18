@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+<h:form>
+
+<p:outputLabel value="Sayı 1:"/>
+<p:inputText value="#{hesapController.sayi1}"/>
+<p:outputLabel value="Sayı 2"/>
+<p:inputText value="#{hesapController.sayi2}"/>
+<p:commandButton value="Topla" action="#{hesapController.topla()}" update="sonuc"/>
+
+<p:outputLabel id="sonuc" value="Sonuç :#{hesapController.sonuc}"></p:outputLabel>
+<br></br>
+
+<ui:repeat var="o" value="#{filmController.filmListesi}" varStatus="status">
+
+<p:panel id="basic" header="#{o.title}" footer="Movie Details" style="margin-bottom:20px">
+        <h:panelGrid columns="2" cellpadding="10">
+            <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+            <h:outputText
+                value="#{o.description}" />
+        </h:panelGrid>
+ </p:panel>
+ 
+ </ui:repeat>
+
+
+</h:form>
+
+</h:body>
+</html>
