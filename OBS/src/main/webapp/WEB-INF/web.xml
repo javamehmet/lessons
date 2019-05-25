@@ -16,7 +16,7 @@
 
 	<!-- Welcome page -->
 	<welcome-file-list>
-		<welcome-file>/hello.xhtml</welcome-file>
+		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<!-- JSF mapping -->
@@ -25,6 +25,8 @@
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	
 
 	<!-- Map these files with JSF -->
 	<servlet-mapping>
