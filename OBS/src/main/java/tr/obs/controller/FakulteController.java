@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -16,7 +17,7 @@ import tr.obs.model.Fakulte;
 import tr.obs.service.FakulteService;
 
 @ManagedBean(name = "fakulteController")
-@SessionScoped
+@RequestScoped
 public class FakulteController implements BaseController<Fakulte> {
 
 	private Fakulte fakulte;
@@ -35,9 +36,17 @@ public class FakulteController implements BaseController<Fakulte> {
 
 		FacesMessage msg = new FacesMessage("Mesaj :", "Fakülte Eklendi!");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
-
+		
+		fakulte=new Fakulte();
+		
 		getList();
 		
+	}
+	
+	public void iptal()
+	{
+		selected=false;
+		fakulte=new Fakulte();
 	}
 
 	public void sil() {

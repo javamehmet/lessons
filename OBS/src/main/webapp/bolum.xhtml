@@ -94,6 +94,7 @@
 		<!-- Sidebar -->
 		<ui:include src="menu.xhtml"></ui:include>
 
+
 		<div id="content-wrapper">
 
 			<div class="container-fluid">
@@ -101,61 +102,64 @@
 				<!-- Breadcrumbs-->
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-					<li class="breadcrumb-item active">Fakülte</li>
+					<li class="breadcrumb-item active">Bölüm İşlemleri</li>
 				</ol>
 
 
 
 
 				<h:form id="form">
-					<p:growl id="msgs" showDetail="true" />
 
 					<div class="card" style="width: 100%;">
 						<div class="card-body">
-							<h5 class="card-title">Fakülte</h5>
-
 							<p:panelGrid columns="2" styleClass="ui-noborder">
-								<p:outputLabel for="input" value="Fakülte Adı :" />
-								<p:inputText id="input" value="#{fakulteController.fakulte.adi}"></p:inputText>
+								<p:outputLabel for="input" value="Bölüm Adı :" />
+								<p:inputText id="input" value="#{bolumController.bolum.adi}"></p:inputText>
+
+								<p:outputLabel for="input2" value="Fakülte :" />
+
+								<p:selectOneMenu id="input2" value="#{bolumController.fakulteId}">
+									<f:selectItems value="#{bolumController.fakulteListesi}" var="fakulte" itemLabel="#{fakulte.adi}" itemValue="#{fakulte.id}"/>
+								</p:selectOneMenu>
+
+
+
+
 							</p:panelGrid>
-							<p:commandButton value="Sil" rendered="#{fakulteController.selected}"
-								actionListener="#{fakulteController.sil}" update=":form" />
+							<p:commandButton value="Sil"
+								rendered="#{bolumController.selected}"
+								actionListener="#{bolumController.sil}" update=":form" />
 							<p:commandButton value="Güncelle"
-								rendered="#{fakulteController.selected}"
-								actionListener="#{fakulteController.sil}" update=":form" />
+								rendered="#{bolumController.selected}"
+								actionListener="#{bolumController.sil}" update=":form" />
 							<p:commandButton value="KAYDET"
-								rendered="#{!fakulteController.selected}"
-								actionListener="#{fakulteController.ekle}" update=":form" />
-							<p:commandButton value="İptal" rendered="#{fakulteController.selected}" update=":form"
-							actionListener="#{fakulteController.iptal}"
-							/>	
+								rendered="#{!bolumController.selected}"
+								actionListener="#{bolumController.ekle}" update=":form" />
+							<p:commandButton value="İptal"
+								rendered="#{bolumController.selected}" update=":form"
+								actionListener="#{bolumController.iptal}" />
 
 						</div>
 					</div>
 
 					<div class="card" style="width: 100%;">
 						<div class="card-body">
-							<h5 class="card-title">Fakülte Listesi</h5>
+							<h5 class="card-title">Bölüm Listesi</h5>
 
-							<p:dataTable tableStyle="table-layout: auto;" id="dataTable" var="fakulte"
-								value="#{fakulteController.fakulteListesi}" rows="10"
-								paginator="true"
-								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-								rowsPerPageTemplate="5,10,15">
-
+							<p:dataTable id="dataTable" var="bolum"
+								value="#{bolumController.bolumListe}">
 								<p:column headerText="Id">
-									<h:outputText value="#{fakulte.id}" />
+									<h:outputText value="#{bolum.id}" />
 								</p:column>
 
 								<p:column headerText="Adı">
-									<h:outputText value="#{fakulte.adi}" />
+									<h:outputText value="#{bolum.adi}" />
 								</p:column>
-								<p:column style="width:32px;text-align: center">
-									<p:commandButton update=":form" icon="pi pi-search"
-										title="View"
-										actionListener="#{fakulteController.onRowSelect(fakulte.id)}">
-									</p:commandButton>
+
+								<p:column headerText="Fakülte">
+									<h:outputText value="#{bolum.fakulte.adi}" />
 								</p:column>
+
 							</p:dataTable>
 
 						</div>
