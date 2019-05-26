@@ -1,0 +1,45 @@
+CREATE TABLE public.tbl_bolum
+(
+  id serial NOT NULL),
+  adi character(50),
+  fakulte_id integer,
+  CONSTRAINT pk_bolum PRIMARY KEY (id)
+)
+
+CREATE TABLE public.tbl_ders
+(
+  id serial NOT NULL,
+  adi character(50),
+  kredi integer,
+  CONSTRAINT pk_ders PRIMARY KEY (id)
+)
+
+CREATE TABLE public.tbl_fakulte
+(
+  id serial NOT NULL DEFAULT,
+  adi character(50),
+  CONSTRAINT pk_fakulte PRIMARY KEY (id)
+)
+
+CREATE TABLE public.tbl_ogrenci
+(
+  id serial NOT NULL DEFAULT ,
+  adi character(50),
+  soyadi character(50),
+  ogrenci_no integer,
+  bolum_id integer,
+  sinif integer,
+  last_update time with time zone,
+  create_date time with time zone,
+  CONSTRAINT pk_ogrenci PRIMARY KEY (id)
+)
+
+CREATE TABLE public.tbl_ogrenci_ders
+(
+  id serial NOT NULL DEFAULT ,
+  ogrenci_id integer,
+  vize_notu integer,
+  final_notu integer,
+  ders_id integer,
+  CONSTRAINT pk_ogrenci_ders PRIMARY KEY (id)
+)
