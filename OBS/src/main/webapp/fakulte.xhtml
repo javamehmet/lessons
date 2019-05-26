@@ -137,15 +137,14 @@
 								<p:outputLabel for="input" value="Fakülte Adı :" />
 								<p:inputText id="input" value="#{fakulteController.fakulte.adi}"></p:inputText>
 							</p:panelGrid>
-							<p:commandButton value="Sil"
-								render="#{fakulteController.selectedFakulte!=null}"
+							<p:commandButton value="Sil" rendered="#{fakulteController.selected}"
 								actionListener="#{fakulteController.sil}" update="dataTable" />
 							<p:commandButton value="Güncelle"
-								render="#{fakulteController.selectedFakulte!=null}"
+								rendered="#{fakulteController.selected}"
 								actionListener="#{fakulteController.sil}" update="dataTable" />
 							<p:commandButton value="KAYDET"
-								render="#{fakulteController.selectedFakulte==null}"
-								actionListener="#{fakulteController.ekle}" update="dataTable" />
+								rendered="#{!fakulteController.selected}"
+								actionListener="#{fakulteController.ekle}" update=":form" />
 
 						</div>
 					</div>
@@ -155,7 +154,10 @@
 							<h5 class="card-title">Fakülte Listesi</h5>
 
 							<p:dataTable id="dataTable" var="fakulte"
-								value="#{fakulteController.fakulteListesi}">
+								value="#{fakulteController.fakulteListesi}" rows="10"
+								paginator="true"
+								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="5,10,15">
 
 								<p:column headerText="Id">
 									<h:outputText value="#{fakulte.id}" />
@@ -166,7 +168,8 @@
 								</p:column>
 								<p:column style="width:32px;text-align: center">
 									<p:commandButton update=":form" icon="pi pi-search"
-										title="View" actionListener="#{fakulteController.onRowSelect(fakulte.id)}">
+										title="View"
+										actionListener="#{fakulteController.onRowSelect(fakulte.id)}">
 									</p:commandButton>
 								</p:column>
 							</p:dataTable>

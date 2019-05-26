@@ -36,6 +36,8 @@ public class FakulteController implements BaseController<Fakulte> {
 		FacesMessage msg = new FacesMessage("Mesaj :", "Fakülte Eklendi!");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
+		getList();
+		
 	}
 
 	public void sil() {
