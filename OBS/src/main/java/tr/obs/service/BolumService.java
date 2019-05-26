@@ -16,7 +16,7 @@ public class BolumService implements ServiceI<Bolum>{
 		
 	}
 
-	public List<List> getList() {
+	public List<Bolum> getList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -25,6 +25,13 @@ public class BolumService implements ServiceI<Bolum>{
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Bolum getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 	
 

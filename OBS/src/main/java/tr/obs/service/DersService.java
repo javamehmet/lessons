@@ -10,13 +10,22 @@ public class DersService implements ServiceI<Ders>{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+
+	public Ders getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 	public void sil(Ders t) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public List<List> getList() {
+	public List<Ders> getList() {
 		// TODO Auto-generated method stub
 		return null;
 	}

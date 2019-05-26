@@ -10,13 +10,22 @@ public class OgrenciDersService implements ServiceI<OgrenciDers> {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+
+	public OgrenciDers getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 	public void sil(OgrenciDers t) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public List<List> getList() {
+	public List<OgrenciDers> getList() {
 		// TODO Auto-generated method stub
 		return null;
 	}

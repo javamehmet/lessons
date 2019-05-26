@@ -12,7 +12,7 @@ import tr.obs.model.Ogrenci;
 import tr.obs.service.OgrenciService;
 
 @ManagedBean(name="ogrenciController")
-@RequestScoped
+@SessionScoped
 public class OgrenciController {
 
 	

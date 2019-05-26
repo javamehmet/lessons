@@ -9,8 +9,10 @@ public interface ServiceI<T> {
 	
 	void sil(T t);
 	
-	List<List> getList();
+	List<T> getList();
 	
 	void guncelle(T t);
+	
+	T getById(int id);
 
 }

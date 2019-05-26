@@ -1,13 +1,33 @@
 package tr.obs.service;
 
+import java.sql.Statement;
 import java.util.List;
 
 import tr.obs.model.Ogrenci;
 
-public class OgrenciService implements ServiceI<Ogrenci>{
+public class OgrenciService extends DBService implements ServiceI<Ogrenci>{
 
 	public void ekle(Ogrenci t) {
-		// TODO Auto-generated method stub
+
+		try {
+			
+		
+		getConnection();
+		
+		Statement  statement=connection.createStatement();
+		
+		String sql="INSERT INTO tbl_ogrenci( "
+            +" adi, soyadi, ogrenci_no, bolum_ýd, sinif, last_update, " 
+            +" create_date) VALUES (?, ?, ?, ?, ?, ?, ?) ";
+		
+		
+		
+		
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		
 	}
 
@@ -15,8 +35,15 @@ public class OgrenciService implements ServiceI<Ogrenci>{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
-	public List<List> getList() {
+	public Ogrenci getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Ogrenci> getList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
