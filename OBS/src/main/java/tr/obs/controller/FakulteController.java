@@ -8,6 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
@@ -17,7 +18,7 @@ import tr.obs.model.Fakulte;
 import tr.obs.service.FakulteService;
 
 @ManagedBean(name = "fakulteController")
-@RequestScoped
+@ViewScoped
 public class FakulteController implements BaseController<Fakulte> {
 
 	private Fakulte fakulte;
@@ -34,8 +35,7 @@ public class FakulteController implements BaseController<Fakulte> {
 
 		fakulteService.ekle(fakulte);
 
-		FacesMessage msg = new FacesMessage("Mesaj :", "Fakülte Eklendi!");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+		mesaj("Fakulte Eklendi!");
 		
 		fakulte=new Fakulte();
 		
@@ -50,12 +50,29 @@ public class FakulteController implements BaseController<Fakulte> {
 	}
 
 	public void sil() {
-		// TODO Auto-generated method stub
+
+
+		fakulteService.sil(fakulte);
+		
+		mesaj(fakulte.getAdi()+" silindi!");
+		
+		iptal();
+		
+		getList();
+		
+	
+		
 
 	}
 
 	public void guncelle() {
-		// TODO Auto-generated method stub
+		fakulteService.guncelle(fakulte);
+		
+		mesaj(fakulte.getAdi()+" guncellendi!");
+		
+		iptal();
+		getList();
+		
 
 	}
 

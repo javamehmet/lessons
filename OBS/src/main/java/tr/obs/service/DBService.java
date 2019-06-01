@@ -17,10 +17,11 @@ public class DBService {
 
 		try {
 
-			Class.forName("org.postgresql.Driver");
+			if (connection == null) {
+				Class.forName("org.postgresql.Driver");
 
-			connection = DriverManager.getConnection(url, user, password);
-
+				connection = DriverManager.getConnection(url, user, password);
+			}
 		} catch (Exception e) {
 
 			System.out.println("Veritabaný baðlantýsýnda problem var!" + e.getMessage());

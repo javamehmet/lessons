@@ -109,6 +109,7 @@
 
 
 				<h:form id="form">
+				<p:growl id="msgs" showDetail="true" />
 
 					<div class="card" style="width: 100%;">
 						<div class="card-body">
@@ -131,7 +132,7 @@
 								actionListener="#{bolumController.sil}" update=":form" />
 							<p:commandButton value="Güncelle"
 								rendered="#{bolumController.selected}"
-								actionListener="#{bolumController.sil}" update=":form" />
+								actionListener="#{bolumController.guncelle}" update=":form" />
 							<p:commandButton value="KAYDET"
 								rendered="#{!bolumController.selected}"
 								actionListener="#{bolumController.ekle}" update=":form" />
@@ -148,7 +149,7 @@
 
 							<p:dataTable id="dataTable" var="bolum"
 								value="#{bolumController.bolumListe}">
-								<p:column headerText="Id">
+								<p:column headerText="Id" style="width:100px;">
 									<h:outputText value="#{bolum.id}" />
 								</p:column>
 
@@ -158,6 +159,13 @@
 
 								<p:column headerText="Fakülte">
 									<h:outputText value="#{bolum.fakulte.adi}" />
+								</p:column>
+								
+								<p:column style="width:75px;text-align: center">
+									<p:commandButton update=":form" icon="pi pi-search"
+										title="View"
+										actionListener="#{bolumController.onRowSelect(bolum.id)}">
+									</p:commandButton>
 								</p:column>
 
 							</p:dataTable>
@@ -213,25 +221,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Bootstrap core JavaScript-->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Page level plugin JavaScript-->
-	<script src="vendor/chart.js/Chart.min.js"></script>
-	<script src="vendor/datatables/jquery.dataTables.js"></script>
-	<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="js/sb-admin.min.js"></script>
-
-	<!-- Demo scripts for this page-->
-	<script src="js/demo/datatables-demo.js"></script>
-	<script src="js/demo/chart-area-demo.js"></script>
 
 </h:body>
 

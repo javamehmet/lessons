@@ -1,11 +1,15 @@
 package tr.obs.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import tr.obs.model.Bolum;
 import tr.obs.model.Fakulte;
@@ -14,8 +18,13 @@ import tr.obs.service.FakulteService;
 
 
 @ManagedBean(name="bolumController")
-@RequestScoped
-public class BolumController implements BaseController<Bolum>{
+@ViewScoped
+public class BolumController implements BaseController<Bolum>, Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Bolum bolum;
 	
@@ -41,27 +50,69 @@ public class BolumController implements BaseController<Bolum>{
 		fakulteListesi=new ArrayList<Fakulte>();
 		fakulteService=new FakulteService();
 		fakulteListesi=fakulteService.getList();
+		getList();
 		
 	}
-
+	
+	public void iptal()
+	{
+		selected=false;
+		bolum=new Bolum();
+	}
+	
 	public void ekle() {
-		// TODO Auto-generated method stub
+		
+		
+		Fakulte fakulte=new Fakulte();
+		fakulte.setId(fakulteId);
+		
+		bolum.setFakulte(fakulte);
+			
+		bolumService.ekle(bolum);
+		
+		mesaj("Bölüm eklendi :"+bolum.getAdi());
+		
+		iptal();
+		
+		getList();
+		
 		
 	}
 
 	public void sil() {
-		// TODO Auto-generated method stub
+
+			bolumService.sil(bolum);
+			mesaj("Bölüm Silindi!");
+			iptal();
+			getList();
 		
 	}
 
 	public void guncelle() {
-		// TODO Auto-generated method stub
+		
+		bolumService.guncelle(bolum);
+		mesaj("Bölüm güncellendi!");
+		iptal();
+		getList();
 		
 	}
 
 	public void getList() {
-		// TODO Auto-generated method stub
+		bolumListe=bolumService.getList();
 		
+		if(bolumListe==null)
+			bolumListe=new ArrayList<>();
+		
+		
+	}
+	
+	public void onRowSelect(int id) {
+
+		bolum = bolumService.getById(id);
+		FacesMessage msg = new FacesMessage("Bolum Id :", String.valueOf(bolum.getId()));
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		selected = true;
+
 	}
 
 	public Bolum getBolum() {

@@ -64,7 +64,26 @@ public class FakulteService extends DBService implements ServiceI<Fakulte> {
 
 
 	public void sil(Fakulte t) {
-		// TODO Auto-generated method stub
+		try {
+			
+			
+			getConnection();
+			
+			String sql="delete from tbl_fakulte where id="+t.getId();
+			
+			Statement stmt=connection.createStatement();
+			
+			stmt.execute(sql);
+			
+			System.out.println("Fakulte adi:"+t.getAdi()+" silindi!");
+			
+			
+			
+		} catch (Exception e) {
+			
+			System.out.println("Fakulte sil hata:"+e.getMessage());
+			// TODO: handle exception
+		}
 
 	}
 
@@ -107,7 +126,28 @@ public class FakulteService extends DBService implements ServiceI<Fakulte> {
 	}
 
 	public void guncelle(Fakulte t) {
-		// TODO Auto-generated method stub
+
+
+		try {
+			
+			getConnection();
+			
+			String sql="UPDATE tbl_fakulte SET  adi='"+t.getAdi()+"' WHERE id="+t.getId();
+			
+			Statement stmt=connection.createStatement();
+			
+			stmt.execute(sql);
+			
+			System.out.println("Fakulte "+t.getId()+" güncellendi!");
+			
+		} catch (Exception e) {
+			
+			System.out.println("Fakulte guncelle Hata:"+e.getMessage());
+			// TODO: handle exception
+		}
+		
+		
+		
 
 	}
 
