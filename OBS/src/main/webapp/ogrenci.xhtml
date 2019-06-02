@@ -124,6 +124,24 @@
 
 								<p:outputLabel for="input3" value="Öğrenci Numarası :" />
 								<p:inputText id="input3" value="#{ogrenciController.ogrenci.no}"></p:inputText>
+								
+								<p:outputLabel for="input4" value="Öğrenci Sınıf :" />
+								<p:inputText id="input4" value="#{ogrenciController.ogrenci.sinif}"></p:inputText>
+								
+								<p:outputLabel for="input5" value="Fakülte :" />
+
+								<p:selectOneMenu id="input5" value="#{ogrenciController.fakulteId}">	
+								<p:ajax event="change" update="input6" listener="#{ogrenciController.onChange}" />
+									<f:selectItems value="#{ogrenciController.fakulteListesi}" var="fakulte" itemLabel="#{fakulte.adi}" itemValue="#{fakulte.id}"/>
+								</p:selectOneMenu>
+								
+								<p:outputLabel for="input6" value="Bölüm :" />
+
+								<p:selectOneMenu id="input6" value="#{ogrenciController.bolumId}">
+									<f:selectItems value="#{ogrenciController.bolumListesi}" var="fakulte" itemLabel="#{fakulte.adi}" itemValue="#{fakulte.id}"/>
+								</p:selectOneMenu>
+								
+								
 							</p:panelGrid>
 							<p:commandButton value="KAYDET"
 								actionListener="#{ogrenciController.ekle}" update="dataTable"></p:commandButton>
@@ -152,6 +170,12 @@
 								<p:column headerText="Numarası">
 									<h:outputText value="#{ogrenci.no}" />
 								</p:column>
+								
+								<p:column headerText="Bölüm">
+									<h:outputText value="#{ogrenci.bolum.adi}" />
+								</p:column>
+								
+								
 							</p:dataTable>
 
 						</div>
@@ -205,25 +229,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Bootstrap core JavaScript-->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Page level plugin JavaScript-->
-	<script src="vendor/chart.js/Chart.min.js"></script>
-	<script src="vendor/datatables/jquery.dataTables.js"></script>
-	<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="js/sb-admin.min.js"></script>
-
-	<!-- Demo scripts for this page-->
-	<script src="js/demo/datatables-demo.js"></script>
-	<script src="js/demo/chart-area-demo.js"></script>
 
 </h:body>
 

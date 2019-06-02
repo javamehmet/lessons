@@ -125,6 +125,7 @@ public class BolumService extends DBService implements ServiceI<Bolum> {
 	public Bolum getById(int id) {
 
 		try {
+			fakulteService=new FakulteService();
 
 			getConnection();
 
