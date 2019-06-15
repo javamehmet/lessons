@@ -155,15 +155,15 @@
 
 							<p:dataTable id="dataTable" var="ogrenci"
 								value="#{ogrenciController.ogrenciListesi}">
-								<p:column headerText="Id">
+								<p:column headerText="#{lbl['ogrenci.datatable.id']}">
 									<h:outputText value="#{ogrenci.id}" />
 								</p:column>
 
-								<p:column headerText="Adı">
+								<p:column headerText="ADİ">
 									<h:outputText value="#{ogrenci.adi}" />
 								</p:column>
 
-								<p:column headerText="Soyadı">
+								<p:column headerText="#{lbl['ogrenci.datatable.soyadi']}">
 									<h:outputText value="#{ogrenci.soyadi}" />
 								</p:column>
 

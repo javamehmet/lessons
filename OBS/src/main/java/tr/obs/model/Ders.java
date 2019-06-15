@@ -1,8 +1,15 @@
 package tr.obs.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_ders")
 public class Ders extends BaseModel{
 	
-	private int kredi;
+	@Column(name="cl_kredi")
+	private  int kredi;
 
 	public int getKredi() {
 		return kredi;

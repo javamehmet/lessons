@@ -2,8 +2,15 @@ package tr.obs.model;
 
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class BaseModel {
 
+	@Id // PK
+	@GeneratedValue // Serial
 	private int id;
 	
 	private String adi;

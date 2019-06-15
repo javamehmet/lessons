@@ -3,6 +3,12 @@ package tr.obs.service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+
+
 public class DBService {
 
 	public static String url = "jdbc:postgresql://localhost:5432/obs";
@@ -29,5 +35,35 @@ public class DBService {
 		}
 
 	}
+	
+	
+	public static void main(String args[])
+	{
+
+
+		
+	 String PERSISTENCE_UNIT_NAME = "Test";	
+	 EntityManager entityMgrObj =
+			 Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
+	EntityTransaction transaction = 
+			 entityMgrObj.getTransaction();
+	
+	transaction.begin();
+	
+	
+	
+	transaction.commit();
+	
+	System.out.println("Baþarýlý");
+	
+
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }
