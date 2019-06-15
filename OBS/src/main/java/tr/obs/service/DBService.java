@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import tr.obs.model.Ders;
+
 
 
 public class DBService {
@@ -49,6 +51,14 @@ public class DBService {
 			 entityMgrObj.getTransaction();
 	
 	transaction.begin();
+	
+	
+	Ders ders=new Ders();
+	
+	ders.setAdi("Türkce");
+	ders.setKredi(2);
+	
+	entityMgrObj.persist(ders); // insert into tbl_Ders 
 	
 	
 	

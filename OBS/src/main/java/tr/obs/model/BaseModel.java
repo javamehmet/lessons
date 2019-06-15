@@ -2,9 +2,12 @@ package tr.obs.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @MappedSuperclass
 public class BaseModel {
@@ -12,6 +15,8 @@ public class BaseModel {
 	@Id // PK
 	@GeneratedValue // Serial
 	private int id;
+	
+	//Primary Key
 	
 	private String adi;
 	
