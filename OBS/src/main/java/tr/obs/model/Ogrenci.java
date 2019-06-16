@@ -1,13 +1,26 @@
 package tr.obs.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_ogrenci")
 public class Ogrenci extends BaseModel {
 
+	@Column
 	private String soyadi;
 	
+	@Column
 	private int no;
 	
+	@ManyToOne
+	@JoinColumn(name="bolum_id")
 	private Bolum bolum;
 	
+	@Column
 	private int sinif;
 
 	public String getSoyadi() {

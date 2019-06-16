@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name="tbl_ders")
 public class Ders extends BaseModel{
 	
-	@Column(name="cl_kredi")
+	@Column
 	private  int kredi;
 
 	public int getKredi() {

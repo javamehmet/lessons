@@ -1,14 +1,29 @@
 package tr.obs.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_ogrenciders")
 public class OgrenciDers extends BaseModel{
 	
+	@ManyToOne
+	@JoinColumn(name="ogrenci_id")
 	private Ogrenci ogrenci;
 	
+	@ManyToOne
+	@JoinColumn(name="ders_id")
 	private Ders ders;
 	
-	private int vizeNotu;
+	@Column
+	private Integer vizeNotu;
 	
-	private int finalNotu;
+	@Column
+	private Integer finalNotu;
 
 	public Ogrenci getOgrenci() {
 		return ogrenci;
@@ -42,7 +57,17 @@ public class OgrenciDers extends BaseModel{
 		this.finalNotu = finalNotu;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
 	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
 	
 
 }
