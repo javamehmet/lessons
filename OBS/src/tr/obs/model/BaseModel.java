@@ -15,7 +15,7 @@ import javax.persistence.PreUpdate;
 public class BaseModel {
 
 	@Id // PK
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 
 	// Primary Key

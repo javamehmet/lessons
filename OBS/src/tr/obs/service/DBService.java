@@ -56,7 +56,10 @@ public class DBService {
 		//List<Fakulte> liste=fakulteDao.getEntityList();
 
 		
-		List<Bolum> liste2=new BolumDao().getEntityList();
+		Fakulte fakulte=new Fakulte();
+		fakulte.setId(1);
+		
+		List<Bolum> liste2=new BolumDao().getBolumByFakulte(fakulte);
 		
 
 /*		

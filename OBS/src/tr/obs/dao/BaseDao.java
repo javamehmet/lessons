@@ -19,7 +19,7 @@ public class BaseDao<E extends BaseModel> implements Serializable {
 	private Class beType;
 
 	@PersistenceContext(unitName = "Test")
-	private transient EntityManager entityManager;
+	public transient EntityManager entityManager;
 
 	public EntityManager getEntityManager() {
 		return entityManager;
@@ -60,10 +60,15 @@ public class BaseDao<E extends BaseModel> implements Serializable {
 	 * 
 	 * 
 	 */
-	
+
 	public List<E> getEntityList() {
 		beType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-		String query = "SELECT BE FROM " + beType.getSimpleName() + " BE ";  // select * from tbl_fakulte as fakulte
+		String query = "SELECT BE FROM " + beType.getSimpleName() + " BE "; // select
+																			// *
+																			// from
+																			// tbl_fakulte
+																			// as
+																			// fakulte
 		entityManager = Persistence.createEntityManagerFactory("Test").createEntityManager();
 		entityManager.getTransaction().begin(); // statement olusturdu sql kodu
 												// bekleme
@@ -74,6 +79,20 @@ public class BaseDao<E extends BaseModel> implements Serializable {
 			return liste;
 		return null;
 
+	}
+
+	public E saveEntity(E baseEntity) {
+		beType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+		
+		entityManager = Persistence.createEntityManagerFactory("Test").createEntityManager();
+		entityManager.getTransaction().begin(); 
+		
+		entityManager.persist(baseEntity);
+		entityManager.flush();
+		
+		entityManager.getTransaction().commit();
+		
+		return baseEntity;
 	}
 
 }
